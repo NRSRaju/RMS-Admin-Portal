@@ -71,7 +71,7 @@
   }
   
   .navbar-item {
-    flex: 1;
+    /* flex: 1; */
     text-align: center;
   }
   

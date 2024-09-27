@@ -26,6 +26,8 @@ const paymentRoutes = require('./routes/paymentRoutes');
 const reportRoutes = require('./routes/reportRoutes');
 const settingsRoutes = require('./routes/settingsRoutes');
 const systemSettingsRoutes = require('./routes/systemSettingsRoutes');
+const recruiterRoutes=require('./routes/recruiterRoutes')
+const usersssRoutes=require('./routes/userSsRoutes')
 
 // Use routes
 app.use('/api', userRoutes);
@@ -34,6 +36,8 @@ app.use('/api', paymentRoutes);
 app.use('/api', reportRoutes);
 app.use('/api', settingsRoutes);
 app.use('/api', systemSettingsRoutes);
+app.use("/api/recruiters", recruiterRoutes);
+app.use("/api/usersSS", usersssRoutes);
 
 // Import and start cron jobs
 const { startCronJobs } = require('./services/cronService');

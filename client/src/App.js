@@ -120,6 +120,8 @@ import Register from './components/Register';
 import ReminderSidebar from './components/ReminderSidebar';
 import Footer from './components/Footer';
 import SystemSettings from './components/SystemSettings';
+import RecruitersManagement from './pages/RecruiterManagement';
+import UsersManagement from './pages/UserManagement';
 import './styles/main.css';
 
 function Navbar({ toggleSidebar }) {
@@ -133,6 +135,12 @@ function Navbar({ toggleSidebar }) {
           <>
             <li className={`navbar-item ${location.pathname === '/' ? 'active' : ''}`}>
               <Link to="/">Dashboard</Link>
+            </li>
+            <li className={`navbar-item ${location.pathname === '/manage-recruiters' ? 'active' : ''}`}>
+              <Link to="/manage-recruiters">Manage Recruiters</Link>
+            </li>
+            <li className={`navbar-item ${location.pathname === '/manage-users' ? 'active' : ''}`}>
+              <Link to="/manage-users">Manage Users</Link>
             </li>
             <li className={`navbar-item ${location.pathname === '/invoice' ? 'active' : ''}`}>
               <Link to="/invoice">Create Invoice</Link>
@@ -208,6 +216,8 @@ function App() {
           <Route path="/payments" element={<PrivateRoute><PaymentTracker /></PrivateRoute>} />
           <Route path="/report" element={<PrivateRoute><GSTReport /></PrivateRoute>} />
           <Route path="/system-settings" element={<PrivateRoute><SystemSettings/></PrivateRoute>} />
+          <Route path="/manage-recruiters" element={<PrivateRoute><RecruitersManagement/></PrivateRoute>}/>
+          <Route path="/manage-users" element={<PrivateRoute><UsersManagement/></PrivateRoute>}/>
         </Routes>
         {sidebarOpen && <ReminderSidebar />}
         <Footer />
