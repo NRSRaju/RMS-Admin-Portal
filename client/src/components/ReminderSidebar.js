@@ -436,7 +436,7 @@ function ReminderSidebar() {
   };
 
   return (
-    <div className="reminder-sidebar" style={{height:"50%",borderRadius:"2rem"}}>
+    <div className="reminder-sidebar" >
       <nav className="reminder-sidebar__navigation">
         <button
           className={`reminder-sidebar__nav-button ${activeTab === 'reminderSettings' ? 'reminder-sidebar__nav-button--active' : ''}`}

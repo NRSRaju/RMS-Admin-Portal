@@ -13,6 +13,7 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
   font-family: "Arial", sans-serif;
+  background-color:#ffffff;
 `;
 
 const Title = styled.h1`
@@ -252,7 +253,7 @@ const RecruiterList = () => {
 
   return (
     <Container>
-      <Title>Recruiter List</Title>
+       <h2>Recruiter List</h2> 
       <SearchForm>
         <SearchInput
           type="search"

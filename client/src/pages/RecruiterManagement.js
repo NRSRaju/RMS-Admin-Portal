@@ -9,10 +9,20 @@ import {
 } from "../services/recruiterService";
 
 const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: "Inter", sans-serif;
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  margin-top:15px;
+  min-height: 100vh;
+  
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 15px;
+  }
 `;
 
 const Title = styled.h1`
@@ -73,7 +83,7 @@ const RecruitersManagement = () => {
   if (loading) {
     return (
       <Container>
-        <Title>Loading...</Title>
+        <div className="loading">Loading...</div>;
       </Container>
     );
   }
@@ -88,7 +98,7 @@ const RecruitersManagement = () => {
 
   return (
     <Container>
-      <Title>Recruiters Management</Title>
+      {/* <h2>Recruiters Management</h2> */}
       <RecruiterList
         recruiters={recruiters}
         onApprove={handleApprove}

@@ -9,10 +9,20 @@ import {
 } from "../services/userService";
 
 const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: "Inter", sans-serif;
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  margin-top:15px;
+  min-height: 100vh;
+  
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 15px;
+  }
 `;
 
 const Title = styled.h1`
@@ -74,7 +84,7 @@ const UsersManagement = () => {
   if (loading) {
     return (
       <Container>
-        <Title>Loading...</Title>
+       <div className="loading">Loading...</div>;
       </Container>
     );
   }
@@ -89,7 +99,7 @@ const UsersManagement = () => {
 
   return (
     <Container>
-      <Title>Users Management</Title>
+      {/* <h2>Users Management</h2> */}
       <UserList
         users={users}
         onUpdateUser={handleUpdateUser}

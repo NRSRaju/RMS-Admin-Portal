@@ -15,6 +15,7 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
   font-family: "Inter", sans-serif;
+  background-color:#ffffff;
 `;
 
 const Title = styled.h1`
@@ -275,7 +276,7 @@ const UserList = () => {
 
   return (
     <Container>
-      <Title>User Management</Title>
+      <h2>User Management</h2> 
       <SearchContainer>
         <SearchIcon size={20} />
         <SearchInput
