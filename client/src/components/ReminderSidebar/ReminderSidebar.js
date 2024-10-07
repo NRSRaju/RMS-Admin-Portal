@@ -349,7 +349,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { FaBell, FaGraduationCap, FaCog, FaBriefcase } from 'react-icons/fa';
-
+import api from '../../services/api';
 
 function ReminderSidebar() {
   const [activeTab, setActiveTab] = useState('reminderSettings');
@@ -393,10 +393,21 @@ function ReminderSidebar() {
     ]);
   };
 
+  // const handleReminderSettingsSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await axios.post('http://localhost:5000/api/settings', { reminderDays });
+  //     toast.success('Reminder settings updated successfully');
+  //   } catch (error) {
+  //     console.error('Error updating reminder settings:', error);
+  //     toast.error('Failed to update reminder settings. Please try again.');
+  //   }
+  // };
+
   const handleReminderSettingsSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/settings', { reminderDays });
+      await api.updateReminderSettings(reminderDays);
       toast.success('Reminder settings updated successfully');
     } catch (error) {
       console.error('Error updating reminder settings:', error);
@@ -419,6 +430,22 @@ function ReminderSidebar() {
     toast.success('Exam results uploaded and sent successfully');
   };
 
+  // const handleJobAlertSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const newJobAlert = { ...jobAlert, id: Date.now() };
+  //   setJobAlerts([...jobAlerts, newJobAlert]);
+  //   setJobAlert({ title: '', company: '', deadline: '', description: '' });
+    
+  //   try {
+  //     // Simulating API call to send notifications
+  //     await axios.post('http://localhost:5000/api/job-alerts', newJobAlert);
+  //     toast.success('Job alert sent successfully via email and SMS');
+  //   } catch (error) {
+  //     console.error('Error sending job alert:', error);
+  //     toast.error('Failed to send job alert. Please try again.');
+  //   }
+  // };
+
   const handleJobAlertSubmit = async (e) => {
     e.preventDefault();
     const newJobAlert = { ...jobAlert, id: Date.now() };
@@ -426,15 +453,14 @@ function ReminderSidebar() {
     setJobAlert({ title: '', company: '', deadline: '', description: '' });
     
     try {
-      // Simulating API call to send notifications
-      await axios.post('http://localhost:5000/api/job-alerts', newJobAlert);
+      await api.sendJobAlert(newJobAlert);
       toast.success('Job alert sent successfully via email and SMS');
     } catch (error) {
       console.error('Error sending job alert:', error);
       toast.error('Failed to send job alert. Please try again.');
     }
   };
-
+  
   return (
     <div className="reminder-sidebar" >
       <nav className="reminder-sidebar__navigation">

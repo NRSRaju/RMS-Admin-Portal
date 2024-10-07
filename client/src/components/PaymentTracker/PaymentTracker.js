@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styled from 'styled-components';
+import api from '../../services/api';
 
 const PaymentTrackerContainer = styled.div`
   max-width: 1200px;
@@ -116,12 +117,24 @@ function PaymentTracker() {
     fetchPayments();
   }, [filter]);
 
+  // const fetchPayments = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await axios.get(`http://localhost:5000/api/payments?filter=${filter}`);
+  //     setPayments(response.data);
+  //     console.log(response.data)
+  //   } catch (error) {
+  //     console.error('Error fetching payments:', error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const fetchPayments = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/api/payments?filter=${filter}`);
-      setPayments(response.data);
-      console.log(response.data)
+      const data = await api.getPayments(filter);
+      setPayments(data);
     } catch (error) {
       console.error('Error fetching payments:', error);
     } finally {

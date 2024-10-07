@@ -110,16 +110,16 @@
 // above is the second correct code 
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation, Navigate } from 'react-router-dom';
-import { FaBell,FaCog } from "react-icons/fa";
-import Dashboard from './components/Dashboard';
-import InvoiceForm from './components/InvoiceForm';
-import PaymentTracker from './components/PaymentTracker';
-import GSTReport from './components/GSTReport';
-import Login from './components/Login';
-import Register from './components/Register';
-import ReminderSidebar from './components/ReminderSidebar';
-import Footer from './components/Footer';
-import SystemSettings from './components/SystemSettings';
+import { FaBell } from "react-icons/fa";
+import Dashboard from './components/Dashboard/Dashboard';
+import InvoiceForm from './components/InvoiceForm/InvoiceForm';
+import PaymentTracker from './components/PaymentTracker/PaymentTracker';
+import GSTReport from './components/GSTReport/GSTReport';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import ReminderSidebar from './components/ReminderSidebar/ReminderSidebar';
+import Footer from './components/Footer/Footer';
+import SystemSettings from './components/SystemSettings/SystemSettings';
 import RecruitersManagement from './pages/RecruiterManagement';
 import UsersManagement from './pages/UserManagement';
 import './styles/main.css';

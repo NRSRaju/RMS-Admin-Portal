@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import RecruiterList from "../components/Manage Recruiters/RecruiterList";
-import {
-  getRecruiters,
-  approveRecruiter,
-  rejectRecruiter,
-  verifyRecruiter,
-} from "../services/recruiterService";
+import RecruiterList from "../components/ManageRecruiters/RecruiterList";
+// import {
+//   getRecruiters,
+//   approveRecruiter,
+//   rejectRecruiter,
+//   verifyRecruiter,
+// } from "../services/recruiterService.js";
+import api from '../services/api.js'
 
 const Container = styled.div`
   padding: 10px;
@@ -44,7 +45,7 @@ const RecruitersManagement = () => {
   const fetchRecruiters = async () => {
     try {
       setLoading(true);
-      const data = await getRecruiters();
+      const data = await api.getRecruiters();
       setRecruiters(data);
     } catch (err) {
       setError("Failed to fetch recruiters. Please try again later.");
@@ -55,7 +56,7 @@ const RecruitersManagement = () => {
 
   const handleApprove = async (id) => {
     try {
-      await approveRecruiter(id);
+      await api.approveRecruiter(id);
       fetchRecruiters();
     } catch (err) {
       setError("Failed to approve recruiter. Please try again.");
@@ -64,7 +65,7 @@ const RecruitersManagement = () => {
 
   const handleReject = async (id) => {
     try {
-      await rejectRecruiter(id);
+      await api.rejectRecruiter(id);
       fetchRecruiters();
     } catch (err) {
       setError("Failed to reject recruiter. Please try again.");
@@ -73,7 +74,7 @@ const RecruitersManagement = () => {
 
   const handleVerify = async (id) => {
     try {
-      await verifyRecruiter(id);
+      await api.verifyRecruiter(id);
       fetchRecruiters();
     } catch (err) {
       setError("Failed to verify recruiter. Please try again.");

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import {
-  getUsers,
-  updateUser,
-  approveCertification,
-  rejectCertification,
-  verifyUser,
-} from "../../services/userService";
+// import {
+//   getUsers,
+//   updateUser,
+//   approveCertification,
+//   rejectCertification,
+//   verifyUser,
+// } from "../../services/userService";
+import api from  "../../services/api";
 import styled from "styled-components";
 import { Search, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -200,7 +201,7 @@ const UserList = () => {
 
   const fetchUsers = async () => {
     try {
-      const { users, total } = await getUsers({ page, search });
+      const { users, total } = await api.getUsers({ page, search });
       setUsers(users);
       setTotal(total);
     } catch (error) {
@@ -210,7 +211,7 @@ const UserList = () => {
 
   const handleUpdateUser = async (id, userData) => {
     try {
-      await updateUser(id, userData);
+      await api.updateUser(id, userData);
       toast.success("User updated successfully");
       fetchUsers();
       setModalOpen(false);
@@ -221,7 +222,7 @@ const UserList = () => {
 
   const handleApproveCertification = async (id) => {
     try {
-      await approveCertification(id);
+      await api.approveCertification(id);
       toast.success("Certification approved successfully");
       fetchUsers();
       setModalOpen(false);
@@ -232,7 +233,7 @@ const UserList = () => {
 
   const handleRejectCertification = async (id, reason) => {
     try {
-      await rejectCertification(id, reason);
+      await api.rejectCertification(id, reason);
       toast.success("Certification rejected successfully");
       fetchUsers();
       setModalOpen(false);
@@ -243,7 +244,7 @@ const UserList = () => {
 
   const handleVerifyUser = async (id) => {
     try {
-      await verifyUser(id);
+      await api.verifyUser(id);
       toast.success("User verified successfully");
       fetchUsers();
     } catch (error) {

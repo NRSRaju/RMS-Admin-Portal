@@ -73,52 +73,6 @@ export const InvoiceTable = styled.table`
   }
 `;
 
-// export const FilterContainer = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   margin-bottom: 30px;
-
-//   @media (max-width: 768px) {
-//     flex-direction: column;
-//     gap: 15px;
-//   }
-// `;
-
-// export const Select = styled.select`
-//   padding: 12px 18px;
-//   border-radius: 6px;
-//   border: 1px solid #cccccc;
-//   background-color: #ffffff;
-//   font-size: 1rem;
-  
-//   &:focus {
-//     border-color: #007acc;
-//     outline: none;
-//   }
-
-//   @media (max-width: 480px) {
-//     padding: 10px 15px;
-//   }
-// `;
-
-// export const Input = styled.input`
-//   padding: 12px 18px;
-//   border-radius: 6px;
-//   border: 1px solid #cccccc;
-//   background-color: #ffffff;
-//   font-size: 1rem;
-
-//   &:focus {
-//     border-color: #007acc;
-//     outline: none;
-//   }
-
-//   @media (max-width: 480px) {
-//     padding: 10px 15px;
-//   }
-// `;
-
 // ReminderSettings Styles
 export const Form = styled.form`
   display: flex;
@@ -140,25 +94,6 @@ export const Label = styled.label`
   }
 `;
 
-// export const Button = styled.button`
-//   padding: 15px 25px;
-//   border: none;
-//   background-color: #007acc;
-//   color: white;
-//   border-radius: 6px;
-//   cursor: pointer;
-//   font-size: 1rem;
-//   font-weight: 600;
-//   transition: background-color 0.3s ease;
-
-//   &:hover {
-//     background-color: #005c99;
-//   }
-
-//   @media (max-width: 480px) {
-//     padding: 12px 20px;
-//   }
-// `;
 
 // AdminAlert Styles
 export const AlertContainer = styled.div`

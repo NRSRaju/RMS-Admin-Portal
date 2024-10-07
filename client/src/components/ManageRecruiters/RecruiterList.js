@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import {
-  getRecruiters,
-  approveRecruiter,
-  rejectRecruiter,
-  verifyRecruiter,
-} from "../../services/recruiterService";
+import api from "../../services/api"
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -180,7 +175,7 @@ const RecruiterList = () => {
 
   const fetchRecruiters = async () => {
     try {
-      const { recruiters = [], total = 0 } = await getRecruiters({
+      const { recruiters = [], total = 0 } = await api.getRecruiters({
         page: page || 1,
         status: status || "all",
         search: search || "",
@@ -194,7 +189,7 @@ const RecruiterList = () => {
 
   const handleApprove = async (id, reason) => {
     try {
-      await approveRecruiter(id, reason);
+      await api.approveRecruiter(id, reason);
       toast.success("Recruiter approved successfully");
       fetchRecruiters();
       setModalOpen(false);
@@ -205,7 +200,7 @@ const RecruiterList = () => {
 
   const handleReject = async (id, reason) => {
     try {
-      await rejectRecruiter(id, reason);
+      await api.rejectRecruiter(id, reason);
       toast.success("Recruiter rejected successfully");
       fetchRecruiters();
       setModalOpen(false);
@@ -216,7 +211,7 @@ const RecruiterList = () => {
 
   const handleVerify = async (id) => {
     try {
-      await verifyRecruiter(id);
+      await api.verifyRecruiter(id);
       toast.success("Recruiter verified successfully");
       fetchRecruiters();
     } catch (error) {

@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import UserList from "../components/Manage Users/UserList";
-import {
-  getUsers,
-  updateUser,
-  approveCertification,
-  rejectCertification,
-} from "../services/userService";
+import UserList from "../components/ManageUsers/UserList";
+
+import api from  "../services/api";
 
 const Container = styled.div`
   padding: 10px;
@@ -44,7 +40,7 @@ const UsersManagement = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const data = await getUsers();
+      const data = await api.getUsers();
       console.log(data)
       setUsers(data);
     } catch (err) {
@@ -56,7 +52,7 @@ const UsersManagement = () => {
 
   const handleUpdateUser = async (id, userData) => {
     try {
-      await updateUser(id, userData);
+      await api.updateUser(id, userData);
       fetchUsers();
     } catch (err) {
       setError("Failed to update user. Please try again.");
@@ -65,7 +61,7 @@ const UsersManagement = () => {
 
   const handleApproveCertification = async (id) => {
     try {
-      await approveCertification(id);
+      await api.approveCertification(id);
       fetchUsers();
     } catch (err) {
       setError("Failed to approve certification. Please try again.");
@@ -74,7 +70,7 @@ const UsersManagement = () => {
 
   const handleRejectCertification = async (id, reason) => {
     try {
-      await rejectCertification(id, reason);
+      await api.rejectCertification(id, reason);
       fetchUsers();
     } catch (err) {
       setError("Failed to reject certification. Please try again.");
